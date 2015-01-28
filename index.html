@@ -4,34 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Colleges Library</title>
 	<script src="lib/angular.min.js"></script>
+	<script src="lib/angular-route.min.js"></script>
+	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-	<div class="main" ng-controller="MyController">
-		<div class="search">
-			<h1>Search Colleges</h1>
-			<label> search:
-			<input ng-model = "query" placeholder = "Search for colleges" autofocus>
-			<label class="formgroup">by:
-				<select ng-model="collegeOrder">
-					<option value="name">Name</option>
-				</select>
-			</label>
-			<label class="formgroup">
-				<input type="radio" ng-model="direction" name="direction" checked>ascending
-			</label>
-			<label class="formgroup">
-				<input type="radio" ng-model="direction" name="direction" value="reverse">descending
-			</label>
-		</div>
-		<ul class="collegelist">
-			<li class="college" ng-repeat="item in colleges | filter:query|orderBy:collegeOrder:direction">
-				<h2>{{item.name | uppercase}}</h2>
-				<img ng-src="images/{{item.shortname}}.jpg" alt="photo of {{item.name}}">
-			</li>
-		</ul>
+	<div class="main" ng-view>
+
 	</div>
 </body>
 </html>

@@ -1,0 +1,24 @@
+<section class="collegepage">
+		<div class="search">
+			<h1>Search Colleges</h1>
+			<label> search:
+			<input ng-model = "query" placeholder = "Search for colleges" autofocus>
+			<label class="formgroup">by:
+				<select ng-model="collegeOrder">
+					<option value="name">Name</option>
+				</select>
+			</label>
+			<label class="formgroup">
+				<input type="radio" ng-model="direction" name="direction" checked>ascending
+			</label>
+			<label class="formgroup">
+				<input type="radio" ng-model="direction" name="direction" value="reverse">descending
+			</label>
+		</div>
+		<ul class="collegelist">
+			<li class="college" ng-repeat="item in colleges | filter:query|orderBy:collegeOrder:direction">
+				<a href="#/details/{{colleges.indexOf(item)}}"><h2>{{item.name | uppercase}}</h2></a>
+				<img ng-src="images/{{item.shortname}}.jpg" alt="photo of {{item.name}}">
+			</li>
+		</ul>
+</section>
